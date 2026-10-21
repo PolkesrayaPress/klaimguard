@@ -5,6 +5,7 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
+from ringkasan import buat_prompt, ringkasan_aturan, ringkasan_gemini
 from detect import KOLOM_WAJIB, baca_klaim, cari_tumpang_tindih, cek_kelengkapan, porsi_keparahan_rs, skor_risiko
 
 st.set_page_config(page_title="KlaimGuard AI", layout="wide")
@@ -82,6 +83,24 @@ with tab1:
             for teks in k["alasan"].split("; "):
                 st.markdown(f"- {teks}")
             st.caption(f"Skor aturan {k['skor_aturan']} + anomali statistik {k['skor_anomali']:.0f} × 0,3")
+            if st.button("✨ Ringkasan untuk verifikator (GenAI)"):
+                cache = st.session_state.setdefault("ringkasan", {})
+                if klaim not in cache:
+                    try:
+                        kunci, model = st.secrets.get("GEMINI_API_KEY"), st.secrets.get("GEMINI_MODEL")
+                    except Exception:  # aplikasi tanpa berkas secrets
+                        kunci, model = None, None
+                    if unggah:  # data unggahan bisa berisi data nyata: jangan kirim ke AI publik
+                        kunci = None
+                    with st.spinner("Menyusun ringkasan..."):
+                        cache[klaim] = ringkasan_gemini(kunci, buat_prompt({**k.to_dict(), "FKL02": klaim}), model)
+                teks, model_dipakai, err = cache[klaim]
+                if teks:
+                    st.info(teks)
+                    st.caption(f"Dibuat oleh {model_dipakai} dari data sintetis. Periksa sebelum dipakai.")
+                else:
+                    st.info(ringkasan_aturan({**k.to_dict(), "FKL02": klaim}))
+                    st.caption(f"Ringkasan versi aturan; GenAI tidak tersedia ({err}).")
             keputusan = st.radio("Keputusan verifikator", ["Setujui", "Tunda, minta klarifikasi faskes", "Teruskan ke investigasi"])
             catatan = st.text_input("Catatan")
             if st.button("Simpan keputusan", type="primary"):
