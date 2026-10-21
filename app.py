@@ -1,4 +1,5 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 import altair as alt
 import pandas as pd
@@ -86,7 +87,7 @@ with tab1:
             if st.button("Simpan keputusan", type="primary"):
                 # shortcut: log hanya bertahan selama sesi browser, untuk produksi perlu basis data
                 st.session_state.setdefault("log", []).append({
-                    "waktu": datetime.now().strftime("%d-%m-%Y %H:%M"), "ID Kunjungan": klaim,
+                    "Waktu (WIB)": datetime.now(ZoneInfo("Asia/Jakarta")).strftime("%d-%m-%Y %H:%M"), "ID Kunjungan": klaim,
                     "Skor": int(k["skor_risiko"]), "Keputusan": keputusan, "Catatan": catatan,
                 })
                 st.success("Keputusan tersimpan di log audit")
