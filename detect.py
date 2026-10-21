@@ -107,3 +107,25 @@ def skor_risiko(df):
     out["kategori"] = pd.cut(out["skor_risiko"], [-1, 29, 49, 100], labels=["Rendah", "Sedang", "Tinggi"])
     out["alasan"] = out["FKL02"].map(lambda i: "; ".join(t for _, t in alasan[i]) or "Tidak ada aturan yang menyala")
     return out
+
+
+KOLOM_WAJIB = ["FKL02", "PSTV01", "PSTV05", "FKL03", "FKL04", "FKL06", "FKL07", "FKL09", "FKL10", "FKL18",
+               "FKL19", "FKL23", "FKL47", "nama_faskes_sintetis", "berkas_pendukung"]
+
+
+def baca_klaim(sumber):
+    """Baca CSV klaim dari path atau berkas unggahan. Mengembalikan (df, pesan_error)."""
+    try:
+        df = pd.read_csv(sumber, dtype={"PSTV01": str, "FKL05": str, "FKL06": str})
+    except Exception as e:  # berkas rusak atau bukan CSV
+        return None, f"Berkas tidak bisa dibaca sebagai CSV: {e}"
+    kurang = [k for k in KOLOM_WAJIB if k not in df.columns]
+    if kurang:
+        return None, "Kolom wajib tidak ada: " + ", ".join(kurang)
+    for k in ["FKL03", "FKL04"]:
+        df[k] = pd.to_datetime(df[k], errors="coerce")
+    if df["FKL03"].isna().any():
+        return None, "Ada baris dengan tanggal datang (FKL03) kosong atau tidak valid"
+    df["PSTV05"] = pd.to_numeric(df["PSTV05"], errors="coerce")
+    df["FKL47"] = pd.to_numeric(df["FKL47"], errors="coerce").fillna(0)
+    return df, None
