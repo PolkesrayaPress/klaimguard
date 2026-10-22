@@ -2,7 +2,7 @@
 
 Deteksi dini anomali klaim FKRTL Program JKN, dibuat untuk **BPJS Kesehatan Healthkathon 2026**.
 
-**Demo:** https://klaimguard-ydzgtn9edxlxcdlk2oqwtf.streamlit.app
+**Demo:** https://klaimguard.streamlit.app
 
 > Seluruh data di repositori dan aplikasi ini **sintetis**. Tidak ada data peserta JKN asli. Struktur kolom mengikuti kode variabel Data Sampel BPJS Kesehatan (PSTV, FKL), sedangkan isi, tarif, dan kode INA-CBG bersifat ilustratif.
 
