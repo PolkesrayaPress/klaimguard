@@ -63,7 +63,7 @@ with st.sidebar:
     st.divider()
     st.markdown("**Cara membaca skor**")
     st.caption("Skor = bobot aturan yang menyala + 0,3 × anomali statistik. Tinggi mulai 50, Sedang 30 sampai 49.")
-    st.caption("[Kode sumber di GitHub](https://github.com/deddyekoheryanto-bot/klaimguard)")
+    st.caption("[Kode sumber di GitHub](https://github.com/PolkesrayaPress/klaimguard)")
 
 df, err = baca_klaim(unggah if unggah else "klaim.csv")
 if err:
