@@ -195,13 +195,12 @@ with tab3:
         st.markdown(f"#### {len(kurang)} klaim dengan berkas tidak lengkap")
         st.dataframe(rapi(kurang[["FKL02", "nama_faskes_sintetis", "FKL10", "berkas_kurang"]])
                      .rename(columns={"berkas_kurang": "Berkas Kurang"}), hide_index=True, height=400)
-    if "label_sintetis" in gabung:
-        with st.expander("Validasi terhadap label data sintetis"):
-            fraud = gabung["label_sintetis"] != "normal"
-            hit = gabung["kategori"] == "Tinggi"
-            v1, v2 = st.columns(2)
-            v1.metric("Presisi kategori Tinggi", f"{(fraud & hit).sum() / max(hit.sum(), 1):.0%}")
-            v2.metric("Recall kategori Tinggi", f"{(fraud & hit).sum() / max(fraud.sum(), 1):.0%}")
-            per_pola = gabung[fraud].groupby("label_sintetis")["kategori"].apply(lambda s: (s == "Tinggi").mean() * 100)
-            st.dataframe(per_pola.round().rename("Tertangkap (%)"))
-            st.caption("Pola kecurangan ditanam sendiri di data sintetis, jadi angka ini menguji logika, bukan kinerja di data nyata.")
+    with st.expander("Bukti kinerja: Benchmark v2"):
+        st.markdown(
+            "Data di aplikasi ini hanya untuk peragaan. Kinerja diukur terpisah pada **Benchmark v2**: "
+            "10.000 klaim sintetis, fraud 2%, 3 RS jujur, kasus jujur yang mirip fraud, spesifikasi dikunci lebih dulu.\n\n"
+            "- Presisi pada 2% klaim teratas: **0,49** (rentang 0,30 sampai 0,71), 24,5 kali lebih baik dari audit acak\n"
+            "- Tumpang tindih lintas faskes, phantom, dan inkonsistensi demografi: semua tertangkap\n"
+            "- Upcoding yang tersebar: **belum tertangkap**; RS kelas A yang jujur ikut tertandai\n\n"
+            "[Rincian lengkap](https://github.com/PolkesrayaPress/klaimguard/blob/main/HASIL_BENCHMARK_V2.md)")
+        st.caption("Data sintetis buatan tim, jadi angka ini menguji logika, bukan kinerja di data nyata.")
