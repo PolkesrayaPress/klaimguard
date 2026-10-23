@@ -12,9 +12,11 @@ kasus = pd.DataFrame([
     baris("K5", "P3", "RS A", "B", "2026-03-01", None),         baris("K6", "P3", "RS C", "C", "2026-03-01", "2026-03-02"),  # pulang kosong
     baris("K7", "P4", "RS A", "B", "2026-03-01", "2026-03-04"), baris("K8", "P4", "RS A", "B", "2026-03-06", "2026-03-09"),  # pecah episode
     baris("K9", "P5", "RS A", "B", "2026-03-01", "2026-03-04"), baris("K10", "P5", "RS A", "B", "2026-04-20", "2026-04-22"),  # rawat ulang wajar
+    baris("K11", "P6", "RS A", "B", "2026-03-01", "2026-03-05"), baris("K12", "P6", "RS C", "C", "2026-03-05", "2026-03-09"),  # rujukan hari sama
+    baris("K13", "P7", "RS A", "B", "2026-03-01", "2026-03-05"), baris("K14", "P7", "RS C", "C", "2026-03-04", "2026-03-05"),  # irisan 2 hari
 ])
 tt = cari_tumpang_tindih(kasus)
-assert set(zip(tt.FKL02_a, tt.FKL02_b)) == {("K1", "K2"), ("K5", "K6")}, tt
+assert set(zip(tt.FKL02_a, tt.FKL02_b)) == {("K1", "K2"), ("K13", "K14"), ("K5", "K6")}, tt
 assert cari_pecah_episode(kasus) == {"K7", "K8"}
 kasus.loc[0, "berkas_pendukung"] = "sep;rincian_biaya"
 assert cek_kelengkapan(kasus).set_index("FKL02").loc["K1", "berkas_kurang"] == "resume_medis;surat_perintah_rawat_inap"

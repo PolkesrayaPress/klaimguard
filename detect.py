@@ -29,9 +29,10 @@ def cek_kelengkapan(df):
 
 def cari_tumpang_tindih(df):
     inap = df[df["FKL10"] == "Rawat Inap"].copy()
+    inap["pulang_ada"] = inap["FKL04"].notna()
     inap["FKL04"] = inap["FKL04"].fillna(inap["FKL03"])  # tanggal pulang kosong dianggap pulang hari itu
     inap["profil"] = profil_faskes(inap)
-    cols = ["FKL02", "PSTV01", "FKL03", "FKL04", "profil", "nama_faskes_sintetis", "FKL47"]
+    cols = ["FKL02", "PSTV01", "FKL03", "FKL04", "pulang_ada", "profil", "nama_faskes_sintetis", "FKL47"]
     pair = inap[cols].merge(inap[cols], on="PSTV01", suffixes=("_a", "_b"))
     pair = pair[
         (pair["FKL02_a"] < pair["FKL02_b"])
@@ -42,6 +43,11 @@ def cari_tumpang_tindih(df):
     akhir = pair[["FKL04_a", "FKL04_b"]].min(axis=1)
     awal = pair[["FKL03_a", "FKL03_b"]].max(axis=1)
     pair["hari_tumpang_tindih"] = (akhir - awal).dt.days + 1
+    # rujukan sah: pulang tercatat dari RS pertama pada hari yang sama dengan masuk RS kedua
+    rujukan = (pair["hari_tumpang_tindih"] == 1) & (
+        ((pair["FKL04_a"] == pair["FKL03_b"]) & pair["pulang_ada_a"])
+        | ((pair["FKL04_b"] == pair["FKL03_a"]) & pair["pulang_ada_b"]))
+    pair = pair[~rujukan].copy()
     pair["total_tagih"] = pair["FKL47_a"] + pair["FKL47_b"]
     return pair.reset_index(drop=True)
 
