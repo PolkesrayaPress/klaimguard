@@ -25,7 +25,9 @@ Fitur verifikator: antrean berwarna, alasan per klaim, ringkasan GenAI (Gemini) 
 
 ## Validasi
 
-Pada data sintetis berlabel (2.000 klaim): presisi kategori Tinggi 95 persen, recall 88 persen. Upcoding tingkat RS tertangkap 65 persen. Pola kecurangan ditanam sendiri, jadi angka ini menguji logika, **bukan** kinerja pada data nyata. Kasus kontrol wajar (rawat berurutan di RS berbeda, rawat ulang setelah lebih dari 30 hari) diuji tidak tertandai.
+Bukti utama ada di **[HASIL_BENCHMARK_V2.md](HASIL_BENCHMARK_V2.md)**: benchmark sintetis 10.000 klaim dengan 5 kondisi, kasus jujur yang mirip fraud, satu modus yang tidak dikenal aturan, dan ablation aturan lawan aturan + model. Spesifikasinya di-commit lebih dulu ([SPEK_BENCHMARK_V2.md](SPEK_BENCHMARK_V2.md)).
+
+Ringkasnya, pada fraud 2% dan kapasitas audit 2%: presisi 0,49 (rentang 0,30 sampai 0,71), 24,5 kali lebih baik dari acak. Upcoding belum tertangkap, dan model belum menambah presisi pada kapasitas ini. Data demo di aplikasi (`klaim.csv`, 2.000 klaim) hanya untuk peragaan, bukan untuk mengukur kinerja.
 
 ## Struktur
 
@@ -34,7 +36,9 @@ Pada data sintetis berlabel (2.000 klaim): presisi kategori Tinggi 95 persen, re
 | `app.py` | Antarmuka Streamlit |
 | `detect.py` | Aturan, korelator, skor anomali, validasi berkas unggahan |
 | `ringkasan.py` | Ringkasan Gemini dan cadangan berbasis aturan |
-| `klaim.csv` | Data sintetis |
+| `klaim.csv` | Data sintetis untuk demo |
+| `gen_bench.py`, `run_bench.py` | Pembuat dan penguji Benchmark v2 |
+| `benchmark/` | Data benchmark D0 sampai D4, hasil, dan lembar tinjauan pakar |
 | `test_detect.py`, `test_ringkasan.py` | Uji kasus tepi dan kontrol negatif |
 
 ## Menjalankan sendiri
