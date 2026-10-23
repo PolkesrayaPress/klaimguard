@@ -130,6 +130,9 @@ def baca_klaim(sumber):
         return None, "Kolom wajib tidak ada: " + ", ".join(kurang)
     if df.empty:
         return None, "Berkas tidak berisi baris klaim"
+    jenis_asing = sorted(set(df["FKL10"].astype(str)) - set(REQUIRED_DOCS))
+    if jenis_asing:
+        return None, "FKL10 hanya boleh 'Rawat Inap' atau 'Rawat Jalan'; ditemukan: " + ", ".join(jenis_asing[:3])
     ganda = df.loc[df["FKL02"].duplicated(), "FKL02"].astype(str).unique()
     if len(ganda):
         return None, "ID kunjungan (FKL02) ganda: " + ", ".join(ganda[:3]) + (" dan lainnya" if len(ganda) > 3 else "")

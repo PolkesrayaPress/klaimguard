@@ -27,6 +27,8 @@ teks = open("klaim.csv").read().splitlines()
 assert baca_klaim(io.StringIO(teks[0] + "\n")) == (None, "Berkas tidak berisi baris klaim")
 _, err = baca_klaim(io.StringIO("\n".join([teks[0], teks[1], teks[1]]) + "\n"))
 assert err and err.startswith("ID kunjungan (FKL02) ganda"), err
+_, err = baca_klaim(io.StringIO("\n".join([teks[0], teks[1].replace(",Rawat Inap,", ",Rawat Menginap,").replace(",Rawat Jalan,", ",Rawat Menginap,")]) + "\n"))
+assert err and err.startswith("FKL10 hanya boleh"), err
 
 df = pd.read_csv("klaim.csv", parse_dates=["PSTV03", "FKL03", "FKL04"], dtype={"PSTV01": str, "FKL06": str})
 r = skor_risiko(df).merge(df[["FKL02", "PSTV01", "label_sintetis"]], on="FKL02")
