@@ -57,4 +57,4 @@ Untuk GenAI, isi `GEMINI_API_KEY` di `.streamlit/secrets.toml`. Tanpa kunci, apl
 - Data Sampel tidak memuat informasi berkas pendukung; lapis kelengkapan hanya dapat didemokan dengan data sintetis.
 - Log audit hanya bertahan selama sesi browser. Produksi membutuhkan basis data dan integrasi dengan sistem verifikasi yang ada.
 
-Dibuat oleh Deddy Eko Heryanto.
+Dibuat oleh Tim Polkesraya Press.
