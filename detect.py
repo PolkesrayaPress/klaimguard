@@ -128,6 +128,11 @@ def baca_klaim(sumber):
     kurang = [k for k in KOLOM_WAJIB if k not in df.columns]
     if kurang:
         return None, "Kolom wajib tidak ada: " + ", ".join(kurang)
+    if df.empty:
+        return None, "Berkas tidak berisi baris klaim"
+    ganda = df.loc[df["FKL02"].duplicated(), "FKL02"].astype(str).unique()
+    if len(ganda):
+        return None, "ID kunjungan (FKL02) ganda: " + ", ".join(ganda[:3]) + (" dan lainnya" if len(ganda) > 3 else "")
     for k in ["FKL03", "FKL04"]:
         df[k] = pd.to_datetime(df[k], errors="coerce")
     if df["FKL03"].isna().any():

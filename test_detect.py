@@ -21,6 +21,13 @@ assert cari_pecah_episode(kasus) == {"K7", "K8"}
 kasus.loc[0, "berkas_pendukung"] = "sep;rincian_biaya"
 assert cek_kelengkapan(kasus).set_index("FKL02").loc["K1", "berkas_kurang"] == "resume_medis;surat_perintah_rawat_inap"
 
+import io
+from detect import baca_klaim
+teks = open("klaim.csv").read().splitlines()
+assert baca_klaim(io.StringIO(teks[0] + "\n")) == (None, "Berkas tidak berisi baris klaim")
+_, err = baca_klaim(io.StringIO("\n".join([teks[0], teks[1], teks[1]]) + "\n"))
+assert err and err.startswith("ID kunjungan (FKL02) ganda"), err
+
 df = pd.read_csv("klaim.csv", parse_dates=["PSTV03", "FKL03", "FKL04"], dtype={"PSTV01": str, "FKL06": str})
 r = skor_risiko(df).merge(df[["FKL02", "PSTV01", "label_sintetis"]], on="FKL02")
 for pid, harus in [("9001871", True), ("9001851", True), ("9001901", False), ("9001916", False)]:

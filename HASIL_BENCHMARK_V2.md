@@ -1,6 +1,6 @@
 # Hasil Benchmark v2 KlaimGuard
 
-Diuji sesuai [SPEK_BENCHMARK_V2.md](SPEK_BENCHMARK_V2.md), yang di-commit sebelum generator ditulis. Detektor: `detect.py` v1.1, tanpa perubahan sesudah hasil terlihat. Alat ukur: healthkathon-eval-kit dari Workshop Healthkathon 2026 (bootstrap 1.000 kali, resampling per RS, rentang 95%).
+Diuji sesuai [SPEK_BENCHMARK_V2.md](SPEK_BENCHMARK_V2.md), yang di-commit sebelum generator ditulis ([riwayat commit spesifikasi](https://github.com/PolkesrayaPress/klaimguard/commits/main/SPEK_BENCHMARK_V2.md) lawan [riwayat commit generator](https://github.com/PolkesrayaPress/klaimguard/commits/main/gen_bench.py)). Detektor: `detect.py` v1.1, tanpa perubahan sesudah hasil terlihat. Alat ukur: healthkathon-eval-kit dari Workshop Healthkathon 2026 (bootstrap 1.000 kali, resampling per RS, rentang 95%).
 
 **Semua data sintetis dan dibuat tim sendiri. Distribusi belum dikalibrasi ke statistik publik. Angka di bawah menguji logika KlaimGuard pada kondisi yang kami rancang, bukan kinerja pada klaim BPJS nyata.**
 
