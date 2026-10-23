@@ -1,0 +1,73 @@
+modus,n,caught,recall,kondisi,kapasitas,varian
+held_out_lama_rawat,30,0,0.0,D0,0.02,aturan saja
+inkonsistensi_demografi,10,10,1.0,D0,0.02,aturan saja
+phantom_billing,30,30,1.0,D0,0.02,aturan saja
+tumpang_tindih_lintas_faskes,30,30,1.0,D0,0.02,aturan saja
+unbundling,30,30,1.0,D0,0.02,aturan saja
+upcoding,70,0,0.0,D0,0.02,aturan saja
+held_out_lama_rawat,30,0,0.0,D0,0.05,aturan saja
+inkonsistensi_demografi,10,10,1.0,D0,0.05,aturan saja
+phantom_billing,30,30,1.0,D0,0.05,aturan saja
+tumpang_tindih_lintas_faskes,30,30,1.0,D0,0.05,aturan saja
+unbundling,30,30,1.0,D0,0.05,aturan saja
+upcoding,70,0,0.0,D0,0.05,aturan saja
+held_out_lama_rawat,30,0,0.0,D0,0.02,aturan + model
+inkonsistensi_demografi,10,10,1.0,D0,0.02,aturan + model
+phantom_billing,30,30,1.0,D0,0.02,aturan + model
+tumpang_tindih_lintas_faskes,30,30,1.0,D0,0.02,aturan + model
+unbundling,30,28,0.9333333333333333,D0,0.02,aturan + model
+upcoding,70,0,0.0,D0,0.02,aturan + model
+held_out_lama_rawat,30,28,0.9333333333333333,D0,0.05,aturan + model
+inkonsistensi_demografi,10,10,1.0,D0,0.05,aturan + model
+phantom_billing,30,30,1.0,D0,0.05,aturan + model
+tumpang_tindih_lintas_faskes,30,30,1.0,D0,0.05,aturan + model
+unbundling,30,30,1.0,D0,0.05,aturan + model
+upcoding,70,1,0.014285714285714285,D0,0.05,aturan + model
+held_out_lama_rawat,14,0,0.0,D1,0.02,aturan saja
+inkonsistensi_demografi,5,5,1.0,D1,0.02,aturan saja
+phantom_billing,15,15,1.0,D1,0.02,aturan saja
+tumpang_tindih_lintas_faskes,14,14,1.0,D1,0.02,aturan saja
+unbundling,14,14,1.0,D1,0.02,aturan saja
+upcoding,35,0,0.0,D1,0.02,aturan saja
+held_out_lama_rawat,14,0,0.0,D1,0.02,aturan + model
+inkonsistensi_demografi,5,5,1.0,D1,0.02,aturan + model
+phantom_billing,15,15,1.0,D1,0.02,aturan + model
+tumpang_tindih_lintas_faskes,14,14,1.0,D1,0.02,aturan + model
+unbundling,14,14,1.0,D1,0.02,aturan + model
+upcoding,35,0,0.0,D1,0.02,aturan + model
+held_out_lama_rawat,78,0,0.0,D2,0.02,aturan saja
+inkonsistensi_demografi,26,26,1.0,D2,0.02,aturan saja
+phantom_billing,77,77,1.0,D2,0.02,aturan saja
+tumpang_tindih_lintas_faskes,76,76,1.0,D2,0.02,aturan saja
+unbundling,76,15,0.19736842105263158,D2,0.02,aturan saja
+upcoding,181,0,0.0,D2,0.02,aturan saja
+held_out_lama_rawat,78,0,0.0,D2,0.02,aturan + model
+inkonsistensi_demografi,26,26,1.0,D2,0.02,aturan + model
+phantom_billing,77,77,1.0,D2,0.02,aturan + model
+tumpang_tindih_lintas_faskes,76,76,1.0,D2,0.02,aturan + model
+unbundling,76,13,0.17105263157894737,D2,0.02,aturan + model
+upcoding,181,0,0.0,D2,0.02,aturan + model
+held_out_lama_rawat,30,0,0.0,D3,0.02,aturan saja
+inkonsistensi_demografi,10,10,1.0,D3,0.02,aturan saja
+phantom_billing,30,30,1.0,D3,0.02,aturan saja
+tumpang_tindih_lintas_faskes,30,30,1.0,D3,0.02,aturan saja
+unbundling,30,30,1.0,D3,0.02,aturan saja
+upcoding,70,0,0.0,D3,0.02,aturan saja
+held_out_lama_rawat,30,0,0.0,D3,0.02,aturan + model
+inkonsistensi_demografi,10,10,1.0,D3,0.02,aturan + model
+phantom_billing,30,30,1.0,D3,0.02,aturan + model
+tumpang_tindih_lintas_faskes,30,30,1.0,D3,0.02,aturan + model
+unbundling,30,26,0.8666666666666667,D3,0.02,aturan + model
+upcoding,70,0,0.0,D3,0.02,aturan + model
+held_out_lama_rawat,30,0,0.0,D4,0.02,aturan saja
+inkonsistensi_demografi,10,10,1.0,D4,0.02,aturan saja
+phantom_billing,30,30,1.0,D4,0.02,aturan saja
+tumpang_tindih_lintas_faskes,30,30,1.0,D4,0.02,aturan saja
+unbundling,30,30,1.0,D4,0.02,aturan saja
+upcoding,70,0,0.0,D4,0.02,aturan saja
+held_out_lama_rawat,30,0,0.0,D4,0.02,aturan + model
+inkonsistensi_demografi,10,10,1.0,D4,0.02,aturan + model
+phantom_billing,30,30,1.0,D4,0.02,aturan + model
+tumpang_tindih_lintas_faskes,30,30,1.0,D4,0.02,aturan + model
+unbundling,30,29,0.9666666666666667,D4,0.02,aturan + model
+upcoding,70,0,0.0,D4,0.02,aturan + model

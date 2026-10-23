@@ -1,0 +1,33 @@
+stratum,value,honest_groups,flagged,rate,kondisi,varian
+kelas_rs,A,1,1,1.0,D0,aturan saja
+kelas_rs,C,1,1,1.0,D0,aturan saja
+kelas_rs,D,1,0,0.0,D0,aturan saja
+kelas_rs,A,1,1,1.0,D0,aturan + model
+kelas_rs,C,1,1,1.0,D0,aturan + model
+kelas_rs,D,1,0,0.0,D0,aturan + model
+kelas_rs,A,1,1,1.0,D1,aturan saja
+kelas_rs,C,1,1,1.0,D1,aturan saja
+kelas_rs,D,1,0,0.0,D1,aturan saja
+kelas_rs,A,1,1,1.0,D1,aturan + model
+kelas_rs,C,1,1,1.0,D1,aturan + model
+kelas_rs,D,1,0,0.0,D1,aturan + model
+kelas_rs,A,1,1,1.0,D2,aturan saja
+kelas_rs,C,1,1,1.0,D2,aturan saja
+kelas_rs,D,1,0,0.0,D2,aturan saja
+kelas_rs,A,1,1,1.0,D2,aturan + model
+kelas_rs,C,1,1,1.0,D2,aturan + model
+kelas_rs,D,1,0,0.0,D2,aturan + model
+kelas_rs,A,1,1,1.0,D3,aturan saja
+kelas_rs,B,3,3,1.0,D3,aturan saja
+kelas_rs,C,4,4,1.0,D3,aturan saja
+kelas_rs,D,2,0,0.0,D3,aturan saja
+kelas_rs,A,1,1,1.0,D3,aturan + model
+kelas_rs,B,3,3,1.0,D3,aturan + model
+kelas_rs,C,4,4,1.0,D3,aturan + model
+kelas_rs,D,2,0,0.0,D3,aturan + model
+kelas_rs,A,1,1,1.0,D4,aturan saja
+kelas_rs,C,1,1,1.0,D4,aturan saja
+kelas_rs,D,1,0,0.0,D4,aturan saja
+kelas_rs,A,1,1,1.0,D4,aturan + model
+kelas_rs,C,1,1,1.0,D4,aturan + model
+kelas_rs,D,1,0,0.0,D4,aturan + model
